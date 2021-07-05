@@ -21,6 +21,10 @@ function CreateGrids(number)
     {
       element.style.background = color;
     });
+    element.addEventListener("mousedown", () =>
+    {
+      element.style.background = color;
+    });
   });
 }
 CreateGrids(16);
