@@ -1,4 +1,8 @@
+let resetButton = document.querySelector("#reset-button");
+let randomizeColorbutton = document.querySelector("#random-color-button");
+let colorButton = document.querySelector("#color-picker");
 let container = document.querySelector("#container");
+let color = "#FFFFFF";
 
 function CreateGrids(number)
 {
@@ -9,15 +13,44 @@ function CreateGrids(number)
     gridElement.classList.add("grid-element");
     container.appendChild(gridElement);
   }
-}
 
+  let gridElements = document.querySelectorAll(".grid-element");
+  gridElements.forEach((element) =>
+  {
+    element.addEventListener("mouseover", () =>
+    {
+      element.style.background = color;
+    });
+  });
+}
 CreateGrids(16);
 
-let gridElements = document.querySelectorAll(".grid-element");
-gridElements.forEach((element) =>
+
+resetButton.addEventListener("click", function ChangeSize()
 {
-  element.addEventListener("mouseover", () =>
+  let userInput = prompt("What size do you want?");
+  if (userInput > 100)
   {
-    element.classList.add("grid-element-hovered");
-  });
+    alert("Too high of a number. Maybe try a number less than 100?");
+    return ChangeSize();
+  }
+  else
+  {
+    document.querySelectorAll(".grid-element").forEach((element) =>
+    {
+      element.remove();
+    });
+    CreateGrids(userInput);
+  }
+});
+
+randomizeColorbutton.addEventListener("click", () =>
+{
+  color = "rgb(" + (Math.floor(Math.random() * 255)) + ", " + (Math.floor(Math.random() * 255)) + ", " + (Math.floor(Math.random() * 255)) + ")";
+});
+
+colorInput = colorButton.querySelector("input[type=color]");
+colorInput.addEventListener("input", () =>
+{
+  color = colorInput.value;
 });

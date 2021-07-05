@@ -1,8 +1,44 @@
 body
 {
+  background: linear-gradient(#331242, #11A3AA);
   width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   margin: 0;
+}
+
+#buttons
+{
+  display: flex;
+}
+
+button, #color-picker
+{
+  background-color: transparent;
+
+  color: #587c36;
+  font-size: 3em;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+
+  border: none;
+  border-radius: 40px;
+  padding: 30px;
+  margin: 30px auto;
+}
+button:hover, #color-picker:hover
+{
+  background-color: rgb(239, 239, 239)
+}
+
+input[type=color]
+{
+  height: 40px;
 }
 
 #container
@@ -21,10 +57,10 @@ body
 {
   width: 100%;
   height: 100%;
-  background: blue;
+  background: black;
 }
 
 .grid-element-hovered
 {
-  background: white;
+  background: red;
 }
